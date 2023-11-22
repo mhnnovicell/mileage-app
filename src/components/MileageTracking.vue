@@ -31,9 +31,10 @@ const updatedLongitude = ref(0);
 const isTracking = ref(false);
 const currentLatitude = ref(0);
 const currentLongtitude = ref(0);
+const hasAllowedPosition = ref(false);
 
 const currentPosition = () => {
-  if (navigator.geolocation) {
+  if (hasAllowedPosition) {
     // Function to handle successful position retrieval
     function successCallback(position: any) {
       const latitude = position.coords.latitude;
@@ -74,6 +75,7 @@ currentPosition();
 
 const startTracking = () => {
   if (navigator.geolocation && isTracking) {
+    hasAllowedPosition.value = true;
     navigator.geolocation.watchPosition(
       (position) => {
         updatedLatitude.value = position.coords.latitude;
@@ -85,7 +87,8 @@ const startTracking = () => {
       { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
     );
   } else {
-    console.error('Geolocation is not supported by this browser.');
+    hasAllowedPosition.value = false;
+    alert('Geolocation is not supported by this browser.');
   }
 };
 </script>
