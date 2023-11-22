@@ -1,7 +1,7 @@
 <template>
   <Suspense>
     <section
-      class="body-font h-dh-screen w-dw-screen bg-gradient-to-r from-purple-800 via-violet-900 to-purple-800"
+      class="body-font h-dh-screen w-dw-screen bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-200 via-violet-600 to-sky-900"
     >
       <div class="container p-8 mx-auto h-dh-screen w-dw-screen md:p-10">
         <MileageTracking />
